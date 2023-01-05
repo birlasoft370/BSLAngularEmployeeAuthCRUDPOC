@@ -1,0 +1,40 @@
+<h2>Employee Listing</h2>
+<div class="container">
+    <table class="table mt-3 table-bordered">
+        <thead>
+            <tr>
+                <th class="scope">Employee ID</th>
+                <th class="scope">Name</th>
+                <th class="scope">Age</th>
+                <th class="scope">Department</th>
+                <th class="scope">Address</th>
+                <th class="scope">Salary</th>
+                <th class="scope">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of collection">
+                <td>{{row.id}}</td>
+                <td>{{row.name}}</td>
+                <td>{{row.age}}</td>
+                <td>{{row.department}}</td>
+                <td>{{row.address}}</td>
+                <td>{{row.salary | currency:'INR'}}</td>
+                <td>
+                    <fa-icon [icon]="faEdit" class="fa-3x" routerLink="/employee/update/{{row.id}}"
+                        style="font-size:20px;color:blue;cursor: pointer;"></fa-icon>
+                    &nbsp;&nbsp;&nbsp;
+                    <fa-icon [icon]="faDelete" class="fa-3x" (click)="deleteEmployee(row.id)"
+                        style="font-size:20px;color:red;cursor: pointer;"></fa-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- /*
+<div class="text-center">
+    <fa-icon [icon]="faLock" class="fa-3x"></fa-icon>
+    <fa-icon [icon]="faEdit" class="fa-3x"></fa-icon>
+    <fa-icon [icon]="faDelete" class="fa-3x"></fa-icon>
+</div>
+*/ -->

@@ -1,0 +1,9 @@
+.navbar-collapse {
+    flex-grow: 0;
+}
+.active
+{
+    font-weight: bold;
+    color: white;
+    background-color: gray;
+}

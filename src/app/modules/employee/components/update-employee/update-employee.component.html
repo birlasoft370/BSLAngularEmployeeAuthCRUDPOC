@@ -1,0 +1,89 @@
+<div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success!</strong> Your data has been updated successfully.
+    <button type="button" (click)="closeAlert()" class="btn-close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Alert!</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <p>{{alertMessage}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="closeClick()">Close</button>
+    </div>
+</ng-template>
+<button class="btn btn-outline-primary mb-2 me-2" style="display: none;" id="submitBtn"
+    (click)="openVerticallyCentered(content)">
+    Modal vertically centered
+</button>
+
+<div class="container col-md-4 col-sm-6">
+    <form [formGroup]="editEmployee" (ngSubmit)="collectEmployee()">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="empname" placeholder="employeename" class="form-control" formControlName="name"
+                name="name" />
+            <span class="text-danger"
+                *ngIf="(employeeFormControl.name.touched || submitted) && employeeFormControl.name.errors?.['required']">
+                Name is required
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>Age</label>
+            <input type="number" id="age" placeholder="age" class="form-control" formControlName="age" name="age" />
+            <span class="text-danger"
+                *ngIf="(employeeFormControl.age.touched || submitted) && employeeFormControl.age.errors?.['required']">
+                Age is required
+            </span>
+            <span class="text-danger"
+                *ngIf="employeeFormControl.age.touched && employeeFormControl.age.errors?.['min']">
+                Minimum age is 1
+            </span>
+            <span class="text-danger"
+                *ngIf="employeeFormControl.age.touched && employeeFormControl.age.errors?.['max']">
+                maximum age is 99
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>department</label>
+            <select title="department" class="form-control" name="department" formControlName="department">
+                <option value="">Select</option>
+                <option *ngFor="let item of departmentdata" value="{{item.code}}">
+                    {{item.name}}
+                </option>
+            </select>
+            <span class="text-danger" *ngIf="(employeeFormControl.department.touched || submitted) &&
+                    employeeFormControl.department.errors?.['required']">Please select department</span>
+
+        </div>
+
+        <div class="form-group">
+            <label>Salary</label>
+            <input type="number" id="salary" placeholder="salary" class="form-control" formControlName="salary"
+                name="salary" />
+            <span class="text-danger"
+                *ngIf="(employeeFormControl.salary.touched || submitted) && employeeFormControl.salary.errors?.['required']">
+                Salary is required
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>Address</label>
+            <textarea id="address" placeholder="address" class="form-control" formControlName="address" name="address">
+            </textarea>
+            <span class="text-danger"
+                *ngIf="(employeeFormControl.address.touched || submitted) && employeeFormControl.address.errors?.['required']">
+                Address is required
+            </span>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
