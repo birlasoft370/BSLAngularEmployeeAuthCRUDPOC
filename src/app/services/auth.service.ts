@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
@@ -8,7 +9,8 @@ import { Observable, of, throwError } from 'rxjs';
 
 export class AuthService {
 
-  constructor(private router: Router) { }
+  url = "https://localhost:7113/api/v1/LoginCQRS/ValidateUser";
+  constructor(private router: Router, private http: HttpClient) { }
 
   setToken(token: string): void {
     localStorage.setItem('token', token);
@@ -28,10 +30,12 @@ export class AuthService {
   }
 
   login({ username, password }: any): Observable<any> {
-    if (username === 'admin' && password === 'admin123') {
-      this.setToken('admin');
-      return of({ name: 'admin', email: 'admin@gmail.com' });
-    }
+    // if (username === 'admin' && password === 'admin123') {
+    //   this.setToken('admin');
+    //   return of({ name: 'admin', email: 'admin@gmail.com' });
+    // }
+    var obj = { "userName": username, "password": password };
+    return this.http.post(this.url, obj);
     return throwError(new Error('Failed to login'));
   }
 }

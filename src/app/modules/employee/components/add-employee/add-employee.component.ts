@@ -17,6 +17,7 @@ export class AddEmployeeComponent {
 
   departmentdata: any[] = [{ "code": "IT", "name": "IT" }, { "code": "HR", "name": "HR" }];
   addEmployee = new FormGroup({
+    id: new FormControl(0),
     name: new FormControl('', Validators.required),
     address: new FormControl('', [Validators.required]),
     age: new FormControl('', [Validators.required, Validators.max(99), Validators.min(1)]),

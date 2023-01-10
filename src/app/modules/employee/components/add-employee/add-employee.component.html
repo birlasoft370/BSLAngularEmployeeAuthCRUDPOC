@@ -26,6 +26,7 @@
 
 <div class="container col-md-4 col-sm-6">
     <form [formGroup]="addEmployee" (ngSubmit)="collectEmployee()">
+        <input type="hidden" formControlName="id" name="id"/>
         <div class="form-group">
             <label>Name</label>
             <input type="text" id="empname" placeholder="employeename" class="form-control" formControlName="name"

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -35,8 +36,15 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.auth.login(this.loginForm.value).subscribe(
         (result: any) => {
-          console.log(result);
-          this.router.navigate(['/employee']);
+          //console.log(result);
+          //console.log(result['user'].userName);
+          if (result['user'].userName != '') {
+            this.auth.setToken(result['user'].userName);
+            this.router.navigate(['/employee']);
+          }
+          else {
+            alert('Failed to login');
+          }
         },
         (err: Error) => {
           alert(err.message);
