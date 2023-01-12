@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -9,8 +9,9 @@ import { EmployeeService } from '../../services/employee.service';
   templateUrl: './add-employee.component.html',
   styleUrls: ['./add-employee.component.css']
 })
-export class AddEmployeeComponent {
+export class AddEmployeeComponent implements OnInit {
   constructor(private empService: EmployeeService, private modalService: NgbModal, private router: Router) { }
+
   alert: boolean = false;
   submitted: boolean = false;
   public alertMessage: string = "";
@@ -24,6 +25,14 @@ export class AddEmployeeComponent {
     department: new FormControl('', Validators.required),
     salary: new FormControl('', Validators.required)
   });
+
+  ngOnInit(): void {
+    this.empService.getDepList().subscribe(x => {
+      console.log(x);
+      this.departmentdata = x;
+    })
+  }
+
 
   collectEmployee(): any {
     this.submitted = true;

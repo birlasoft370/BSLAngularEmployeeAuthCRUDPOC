@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ export class EmployeeService {
 
   //url = "http://localhost:3000/employee";
   url = "https://localhost:7113/api/v1/EmployeeCQRS/";
+  DeptAPIUrl = "https://localhost:7113/api";
 
   constructor(private http: HttpClient) { }
 
@@ -33,4 +35,22 @@ export class EmployeeService {
     //return this.http.delete(`${this.url}/${id}`);
     return this.http.delete(`${this.url + 'deleteEmployee?employeeId=' + id}`);
   }
+
+
+  getDepList(): Observable<any[]> {
+    return this.http.get<any>(this.DeptAPIUrl + '/department');
+  }
+
+  addDepartment(val: any) {
+    return this.http.post(this.DeptAPIUrl + '/Department', val, { responseType: 'text' });
+  }
+
+  updateDepartment(val: any) {
+    return this.http.put(this.DeptAPIUrl + '/Department', val, { responseType: 'text' });
+  }
+
+  deleteDepartment(val: any) {
+    return this.http.delete(this.DeptAPIUrl + '/Department/' + val, { responseType: 'text' });
+  }
+
 }

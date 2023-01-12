@@ -55,8 +55,8 @@
             <label>department</label>
             <select title="department" class="form-control" name="department" formControlName="department">
                 <option value="">Select</option>
-                <option *ngFor="let item of departmentdata" value="{{item.code}}">
-                    {{item.name}}
+                <option *ngFor="let item of departmentdata" value="{{item.departmentName}}">
+                    {{item.departmentName}}
                 </option>
             </select>
             <span class="text-danger" *ngIf="(employeeFormControl.department.touched || submitted) &&
@@ -85,5 +85,6 @@
         </div>
         <br>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <a style="float:right" routerLink="../../list">Back to List</a>
     </form>
 </div>

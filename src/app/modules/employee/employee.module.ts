@@ -12,6 +12,10 @@ import { HttpClientModule } from '@angular/common/http'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { LandingHomeComponent } from './components/landing-home/landing-home.component';
+import { DepartmentComponent } from './components/department/department.component';
+import { ShowDepComponent } from './components/department/show-dep/show-dep.component';
+import { AddEditDepComponent } from './components/department/add-edit-dep/add-edit-dep.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
     FooterComponent,
     AddEmployeeComponent,
     UpdateEmployeeComponent,
-    EmployeeListingComponent
+    EmployeeListingComponent,
+    LandingHomeComponent,
+    DepartmentComponent,
+    ShowDepComponent,
+    AddEditDepComponent
   ],
   imports: [
     CommonModule,

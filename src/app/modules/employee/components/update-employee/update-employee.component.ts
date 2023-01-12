@@ -10,9 +10,16 @@ import { EmployeeService } from '../../services/employee.service';
   styleUrls: ['./update-employee.component.css']
 })
 export class UpdateEmployeeComponent {
+  
   constructor(private route: ActivatedRoute,private modalService: NgbModal, private empService: EmployeeService,private router:Router) { }
-
+  
   ngOnInit() {
+
+    this.empService.getDepList().subscribe(x => {
+      console.log(x);
+      this.departmentdata = x;
+    })
+
     console.warn(this.route.snapshot.params['id']);
     this.empService.getCurrentEmployee(this.route.snapshot.params['id']).subscribe((result: any) => {
       console.log(result);
