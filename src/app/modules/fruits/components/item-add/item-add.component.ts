@@ -9,21 +9,26 @@ import { GroceryService } from '../../services/grocery.service';
 })
 export class ItemAddComponent {
   constructor(private service: GroceryService) { }
-  itemTypedata = [{ id: 1, name: "vegetables" }, { id: 2, name: "fruits" }]
+  itemTypedata = [{ id: 1, name: "Vegetable" }, { id: 2, name: "Fruits" }]
 
-  addFruit = new FormGroup({
-    id: new FormControl(0),
-    detail: new FormControl('', Validators.required),
+  addItem = new FormGroup({
+    itemid: new FormControl(0),
+    itemDetail: new FormControl('', Validators.required),
     itemType: new FormControl('', Validators.required)
   })
 
-  collectFruit() {
-    this.service.Save(this.FruitFormControl).subscribe(result => {
+  collectItem() {
+    this.service.Save(this.addItem.value).subscribe(result => {
       console.log(result);
+      this.addItem.reset({
+        itemid: 0,
+        itemDetail: '',
+        itemType: ''
+      });
     });
   }
 
   get FruitFormControl() {
-    return this.addFruit.controls;
+    return this.addItem.controls;
   }
 }

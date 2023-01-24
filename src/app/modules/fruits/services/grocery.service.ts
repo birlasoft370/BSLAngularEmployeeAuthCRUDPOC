@@ -6,11 +6,12 @@ import { Observable, Subject, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class GroceryService {
-  apiurl_des = 'http://localhost:41055/Designation';
-  
+  apiurl = 'https://localhost:7113/api/v1/GroceryCQRS/';
+
   private _refreshrequired = new Subject<void>();
-  
-  apiurl = 'assets/dummydata.json';
+
+  //apiurl = 'assets/dummydata.json';
+
   get RefreshRequired() {
     return this._refreshrequired;
   }
@@ -18,16 +19,13 @@ export class GroceryService {
   constructor(private http: HttpClient) { }
 
   GetAll(): Observable<object> {
-    return this.http.get(this.apiurl);
+    return this.http.get(`${this.apiurl + 'getAllGrocery'}`);
   }
 
   Save(inputdata: any) {
-    var obj = {
-      "code": "106",
-      "name": "Vegetables"
-    }
     // return this.http.post(this.apiurl_des, obj);
-    return this.http.post(this.apiurl_des, obj).pipe(
+    var MainObj = { "groceryModel": inputdata };
+    return this.http.post((this.apiurl + 'addGrocery'), MainObj).pipe(
       tap(() => {
         this.RefreshRequired.next();
       })

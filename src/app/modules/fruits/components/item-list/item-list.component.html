@@ -11,8 +11,8 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of itemList">
-                        <td>{{item.itemTypeId}}</td>
-                        <td>{{item.detail}}</td>
+                        <td>{{item.itemType}}</td>
+                        <td>{{item.itemDetail}}</td>
                     </tr>
                     <tr *ngIf="itemList.length==0">
                         <span class="text-center">No Records Found</span> 
@@ -38,7 +38,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of vegList">
-                            <td>{{item.detail}}</td>
+                            <td>{{item.itemDetail}}</td>
                         </tr>
                         <tr *ngIf="vegList.length==0">
                            <span class="text-center">No Records Found</span> 
@@ -58,7 +58,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of fruitList">
-                            <td>{{item.detail}}</td>
+                            <td>{{item.itemDetail}}</td>
                         </tr>
                         <tr *ngIf="fruitList.length==0">
                            <span class="text-center">No Records Found</span> 

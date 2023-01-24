@@ -1,6 +1,6 @@
 <h2>Fruits</h2>
 <div class="container-fluid">
-    <form [formGroup]="addFruit" class="form-horizontal" (ngSubmit)="collectFruit()">
+    <form [formGroup]="addItem" class="form-horizontal" (ngSubmit)="collectItem()">
         <div class="form-group row">
             <div class="col-md-3">
                 <label>Item Type</label>
@@ -13,8 +13,8 @@
             </div>
             <div class="col-md-3">
                 <label>Detail</label>
-                <input type="text" id="detail" placeholder="Detail" class="form-control" formControlName="detail"
-                    name="detail" />
+                <input type="text" id="itemDetail" placeholder="Detail" class="form-control" formControlName="itemDetail"
+                    name="itemDetail" />
             </div>
             <div class="col-md-3" style="margin-top: 20px;">
                 <button type="submit" class="btn btn-primary">Add</button>
