@@ -12,6 +12,10 @@ export class EmployeeListingComponent {
   faLock = faLock;
   faEdit = faEdit;
   faDelete = faTrash;
+
+  EmployeeNameFilter: string = "";
+  EmployeeListWithoutFilter: any = [];
+
   constructor(private empService: EmployeeService) { }
   ngOnInit(): void {
     this.LoadEmployee();
@@ -21,6 +25,8 @@ export class EmployeeListingComponent {
   LoadEmployee() {
     this.empService.getEmployeeList().subscribe((result) => {
       this.collection = result;
+      this.EmployeeListWithoutFilter = result;
+      this.EmployeeNameFilter = "";
     });
   }
 
@@ -31,6 +37,14 @@ export class EmployeeListingComponent {
         this.LoadEmployee();
       })
     }
+  }
+
+  FilterFn() {
+    var EmployeeNameFilter = this.EmployeeNameFilter;
+
+    this.collection = this.EmployeeListWithoutFilter.filter(function (el: any) {
+      return el.name.toString().toLowerCase().includes(EmployeeNameFilter.toString().trim().toLowerCase())
+    });
   }
 
 }

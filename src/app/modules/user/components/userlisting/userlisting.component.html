@@ -1,41 +1,35 @@
-<h2>Employee Listing</h2>
+<h2>User Listing</h2>
 
 <div class="container">
     <div class="form-group row">
         <div class="col-md-6">
-            <input [(ngModel)]="EmployeeNameFilter" class="form-control" (keyup)="FilterFn()"
+            <input [(ngModel)]="UserNameFilter" class="form-control" (keyup)="FilterFn()"
                 placeholder="Filter by Name">
         </div>
         <div class="col-md-6" style="text-align: right;">
-            <button type="button" class="btn btn-primary" routerLink="../add">Add New
-                Employee</button>
+            <button type="button" class="btn btn-primary" routerLink="add">Add New
+                User</button>
         </div>
     </div>
     <table class="table mt-3 table-bordered">
         <thead>
             <tr>
-                <th class="scope">Employee ID</th>
-                <th class="scope">Name</th>
-                <th class="scope">Age</th>
-                <th class="scope">Department</th>
-                <th class="scope">Address</th>
-                <th class="scope">Salary</th>
+                <th class="scope">User ID</th>
+                <th class="scope">UserName</th>
+                <th class="scope">Password</th>
                 <th class="scope">Action</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let row of collection">
                 <td>{{row.id}}</td>
-                <td>{{row.name}}</td>
-                <td>{{row.age}}</td>
-                <td>{{row.department}}</td>
-                <td>{{row.address}}</td>
-                <td>{{row.salary | currency:'INR'}}</td>
+                <td>{{row.userName}}</td>
+                <td>{{row.password | passwordpipe:'*'}}</td>
                 <td>
-                    <fa-icon [icon]="faEdit" class="fa-3x" routerLink="/employee/update/{{row.id}}"
+                    <fa-icon [icon]="faEdit" class="fa-3x" routerLink="update/{{row.id}}"
                         style="font-size:20px;color:blue;cursor: pointer;"></fa-icon>
                     &nbsp;&nbsp;&nbsp;
-                    <fa-icon [icon]="faDelete" class="fa-3x" (click)="deleteEmployee(row.id)"
+                    <fa-icon [icon]="faDelete" class="fa-3x" (click)="deleteUser(row.id)"
                         style="font-size:20px;color:red;cursor: pointer;"></fa-icon>
                 </td>
             </tr>

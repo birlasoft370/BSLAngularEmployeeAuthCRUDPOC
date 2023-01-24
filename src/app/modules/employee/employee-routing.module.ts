@@ -18,6 +18,15 @@ const routes: Routes = [
       { path: 'update/:id', component: UpdateEmployeeComponent },
       { path: 'department', component: DepartmentComponent },
       { path: '', redirectTo: '/employee/', pathMatch: 'full' },
+      {
+        path: 'user',
+        loadChildren: () =>
+          import('src/app/modules/user/user.module').then((m) => m.UserModule),
+      },
+      {
+        path: 'fruit',
+        loadChildren: () => import('src/app/modules/fruits/fruits.module').then((m) => m.FruitsModule)
+      }
     ],
   },
 ];

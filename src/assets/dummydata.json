@@ -1,0 +1,22 @@
+[
+    {
+        "itemId": 1,
+        "itemTypeId": 1,
+        "detail": "Cucumber"
+    },
+    {
+        "itemId": 2,
+        "itemTypeId": 2,
+        "detail": "Apple"
+    },
+    {
+        "itemId": 3,
+        "itemTypeId": 2,
+        "detail": "banana"
+    },
+    {
+        "itemId": 4,
+        "itemTypeId": 1,
+        "detail": "carrot"
+    }
+]

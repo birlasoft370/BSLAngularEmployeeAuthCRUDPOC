@@ -1,0 +1,24 @@
+<h2>Fruits</h2>
+<div class="container-fluid">
+    <form [formGroup]="addFruit" class="form-horizontal" (ngSubmit)="collectFruit()">
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label>Item Type</label>
+                <select title="itemType" class="form-control" name="itemType" formControlName="itemType">
+                    <option value="">Select</option>
+                    <option *ngFor="let item of itemTypedata" value="{{item.name}}">
+                        {{item.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label>Detail</label>
+                <input type="text" id="detail" placeholder="Detail" class="form-control" formControlName="detail"
+                    name="detail" />
+            </div>
+            <div class="col-md-3" style="margin-top: 20px;">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -24,9 +24,11 @@ export class AddEditDepComponent {
       DepartmentName: this.DepartmentName
     };
     if (this.DepartmentName != null && this.DepartmentName != "") {
-      this.service.addDepartment(val).subscribe(res => {
+      this.service.addDepartment(val).subscribe((res: any) => {
         console.log(res);
-        alert(res.toString());
+        //var parsedjson = JSON.parse(res);
+        //alert(parsedjson.departmentModel.departmentId);
+        alert('Your data has been inserted successfully.');
       });
     }
     else {
@@ -40,8 +42,8 @@ export class AddEditDepComponent {
       DepartmentName: this.DepartmentName
     };
     if (this.DepartmentName != null && this.DepartmentName != "") {
-      this.service.updateDepartment(val).subscribe(res => {
-        alert(res.toString());
+      this.service.updateDepartment(val).subscribe((res: any) => {
+        alert('Your data has been updated successfully.');
       });
     }
     else {

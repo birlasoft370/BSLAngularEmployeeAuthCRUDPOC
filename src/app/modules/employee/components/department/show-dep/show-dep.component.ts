@@ -66,7 +66,7 @@ export class ShowDepComponent {
     //console.log(item);
     if (confirm('Are you sure to delete??')) {
       this.service.deleteDepartment(item.departmentId).subscribe(data => {
-        alert(data.toString());
+        //alert(data.toString());
         this.refreshDepList();
       })
     }

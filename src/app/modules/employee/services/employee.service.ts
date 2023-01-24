@@ -9,7 +9,7 @@ export class EmployeeService {
 
   //url = "http://localhost:3000/employee";
   url = "https://localhost:7113/api/v1/EmployeeCQRS/";
-  DeptAPIUrl = "https://localhost:7113/api";
+  DeptAPIUrl = "https://localhost:7113/api/v1/DepartmentCQRS/";
 
   constructor(private http: HttpClient) { }
 
@@ -38,19 +38,23 @@ export class EmployeeService {
 
 
   getDepList(): Observable<any[]> {
-    return this.http.get<any>(this.DeptAPIUrl + '/department');
+    return this.http.get<any>(this.DeptAPIUrl + 'getAllDepartment');
   }
 
   addDepartment(val: any) {
-    return this.http.post(this.DeptAPIUrl + '/Department', val, { responseType: 'text' });
+    var MainObj = { "departmentModel": val };
+    return this.http.post(this.DeptAPIUrl + 'addDepartment', MainObj, { responseType: 'text' });
   }
 
   updateDepartment(val: any) {
-    return this.http.put(this.DeptAPIUrl + '/Department', val, { responseType: 'text' });
+    var MainObj = { "departmentModel": val };
+    return this.http.put(this.DeptAPIUrl + 'updateDepartment', MainObj, { responseType: 'text' });
+
+    // return this.http.put(this.DeptAPIUrl + '/Department', val, { responseType: 'text' });
   }
 
   deleteDepartment(val: any) {
-    return this.http.delete(this.DeptAPIUrl + '/Department/' + val, { responseType: 'text' });
+    return this.http.delete(this.DeptAPIUrl + 'deleteDepartment?DepartmentId=' + val);
   }
 
 }

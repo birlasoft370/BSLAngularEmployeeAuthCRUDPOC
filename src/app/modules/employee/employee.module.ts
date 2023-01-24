@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { EmployeeRoutingModule } from './employee-routing.module';
 import { EmployeeDashboardComponent } from './components/employee-dashboard/employee-dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from '../../components/header/header.component';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { UpdateEmployeeComponent } from './components/update-employee/update-employee.component';
 import { EmployeeListingComponent } from './components/employee-listing/employee-listing.component';
@@ -16,6 +16,7 @@ import { LandingHomeComponent } from './components/landing-home/landing-home.com
 import { DepartmentComponent } from './components/department/department.component';
 import { ShowDepComponent } from './components/department/show-dep/show-dep.component';
 import { AddEditDepComponent } from './components/department/add-edit-dep/add-edit-dep.component';
+import { UserModule } from '../user/user.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AddEditDepComponent } from './components/department/add-edit-dep/add-ed
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbAlertModule
+    NgbAlertModule,
+    UserModule
   ]
 })
 export class EmployeeModule { }
