@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-4">
         <div class="card card-outline-success mb-3">
             <div class="card-header card-inverse card-success">
                 Draggable Items
@@ -9,11 +9,18 @@
                     <li class="list-group-item list-group-item-action list-group-item-success" [draggable]
                         *ngFor="let item of itemList" [dragClass]="'active'" [dragData]="item"
                         [dragScope]="item.itemType">
-                        {{item.itemType}} | {{item.itemDetail}}
+                        <span style="text-align:left;">
+                            {{item.itemType}}
+                            <span style="float:right;">
+                                {{item.itemDetail}}
+                            </span>
+                        </span>
+                        <!-- <span style="text-align: left;"> {{item.itemType}}</span>
+                        <span style="text-align: right;"> {{item.itemDetail}}</span> -->
                     </li>
                 </div>
             </div>
-            <div *ngIf="itemList.length==0" class="card-footer text-muted">
+            <div *ngIf=" itemList.length==0" class="card-footer text-muted">
                 No Records Found
             </div>
         </div>
@@ -27,8 +34,8 @@
             </div>
             <div class="card-block scroll-list">
                 <div class="list-group">
-                    <li class="list-group-item list-group-item-action"
-                        *ngFor="let item of droppedFruits">{{item.itemDetail}}</li>
+                    <li class="list-group-item list-group-item-action" *ngFor="let item of droppedFruits">
+                        {{item.itemDetail}}</li>
                 </div>
             </div>
             <div *ngIf="droppedFruits.length==0" class="card-footer text-muted">
@@ -44,8 +51,8 @@
                 Drop Vegetables here</div>
             <div class="card-block scroll-list">
                 <div class="list-group">
-                    <li class="list-group-item list-group-item-action"
-                        *ngFor="let item of droppedVegetables">{{item.itemDetail}}</li>
+                    <li class="list-group-item list-group-item-action" *ngFor="let item of droppedVegetables">
+                        {{item.itemDetail}}</li>
                 </div>
             </div>
             <div *ngIf="droppedVegetables.length==0" class="card-footer text-muted">
