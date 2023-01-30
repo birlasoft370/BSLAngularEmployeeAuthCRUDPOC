@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-sm-3">
+        <div class="card card-outline-success mb-3">
+            <div class="card-header card-inverse card-success">
+                Draggable Items
+            </div>
+            <div class="card-block scroll-list">
+                <div class="list-group">
+                    <li class="list-group-item list-group-item-action list-group-item-success" [draggable]
+                        *ngFor="let item of itemList" [dragClass]="'active'" [dragData]="item"
+                        [dragScope]="item.itemType">
+                        {{item.itemType}} | {{item.itemDetail}}
+                    </li>
+                </div>
+            </div>
+            <div *ngIf="itemList.length==0" class="card-footer text-muted">
+                No Records Found
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="card card-outline-primary mb-3" droppable [dragOverClass]="'drag-target-border'"
+            [dropScope]="'Fruits'" [dragHintClass]="'drag-hint'" (onDrop)="onFruitDrop($event)">
+            <div class="card-header card-inverse card-primary">
+                Drop Fruits here
+            </div>
+            <div class="card-block scroll-list">
+                <div class="list-group">
+                    <li class="list-group-item list-group-item-action"
+                        *ngFor="let item of droppedFruits">{{item.itemDetail}}</li>
+                </div>
+            </div>
+            <div *ngIf="droppedFruits.length==0" class="card-footer text-muted">
+                No Records Found
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="card card-outline-primary mb-3" droppable [dragOverClass]="'drag-target-border-green'"
+            [dropScope]="'Vegetable'" [dragHintClass]="'drag-hint'" (onDrop)="onVegetableDrop($event)">
+            <div class="card-header card-inverse card-primary">
+                Drop Vegetables here</div>
+            <div class="card-block scroll-list">
+                <div class="list-group">
+                    <li class="list-group-item list-group-item-action"
+                        *ngFor="let item of droppedVegetables">{{item.itemDetail}}</li>
+                </div>
+            </div>
+            <div *ngIf="droppedVegetables.length==0" class="card-footer text-muted">
+                No Records Found
+            </div>
+        </div>
+    </div>
+</div>

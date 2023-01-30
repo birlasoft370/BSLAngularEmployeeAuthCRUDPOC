@@ -17,6 +17,7 @@ import { DepartmentComponent } from './components/department/department.componen
 import { ShowDepComponent } from './components/department/show-dep/show-dep.component';
 import { AddEditDepComponent } from './components/department/add-edit-dep/add-edit-dep.component';
 import { UserModule } from '../user/user.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UserModule } from '../user/user.module';
     FormsModule,
     ReactiveFormsModule,
     NgbAlertModule,
-    UserModule
+    UserModule,
+    NgxPaginationModule
   ]
 })
 export class EmployeeModule { }

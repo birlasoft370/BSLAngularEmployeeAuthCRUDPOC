@@ -4,20 +4,29 @@
         <div class="form-group row">
             <div class="col-md-3">
                 <label>Item Type</label>
-                <select title="itemType" class="form-control" name="itemType" formControlName="itemType">
+                <select title="itemType" class="form-control" name="itemType" formControlName="itemType"
+                    [class.is-invalid]="addItemFormControl.itemType.invalid && addItemFormControl.itemType.touched">
                     <option value="">Select</option>
                     <option *ngFor="let item of itemTypedata" value="{{item.name}}">
                         {{item.name}}
                     </option>
                 </select>
+                <small class="text-danger" [class.d-none]="addItemFormControl.itemType.valid || addItemFormControl.itemType.untouched">Please choose a
+                    Type</small>
+
             </div>
             <div class="col-md-3">
                 <label>Detail</label>
-                <input type="text" id="itemDetail" placeholder="Detail" class="form-control" formControlName="itemDetail"
+                <input type="text" id="itemDetail" placeholder="Detail" class="form-control"
+                    formControlName="itemDetail" required
+                    [class.is-invalid]="addItemFormControl.itemDetail.invalid && addItemFormControl.itemDetail.touched"
                     name="itemDetail" />
+                <small class="text-danger"
+                    [class.d-none]="addItemFormControl.itemDetail.valid || addItemFormControl.itemDetail.untouched">Details
+                    is required</small>
             </div>
             <div class="col-md-3" style="margin-top: 20px;">
-                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="submit" [disabled]="addItem.invalid" class="btn btn-primary">Add</button>
             </div>
         </div>
     </form>

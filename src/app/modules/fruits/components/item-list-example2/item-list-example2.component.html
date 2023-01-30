@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+    <div class="col-md-1">
+        &nbsp;
+    </div>
+    <div class="col-md-2" style="text-align: center;">
+        <button class="btn btn-primary m-2" (click)="moveVeg()">Vegetable</button>
+    </div>
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+    <div class="col-md-2" style="text-align: center;">
+        <button class="btn btn-success m-2" (click)="moveFruit()">Fruits</button>
+    </div>
+</div>
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col">
+            <h2>Items List</h2>
+            <div class="table-responsive tableFixHead">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of itemList">
+                            <td>{{item.itemType}}</td>
+                            <td>{{item.itemDetail}}</td>
+                        </tr>
+                        <tr *ngIf="itemList.length==0">
+                            <span class="text-center">No Records Found</span>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <h2>Vegetable List</h2>
+            <div class="table-responsive tableFixHead">
+                <table class="table table-bordered">
+                    <!-- <thead>
+                        <tr>
+                            <th scope="col">Details</th>
+                        </tr>
+                    </thead> -->
+                    <tbody>
+                        <tr *ngFor="let item of vegList">
+                            <td>{{item.itemDetail}}</td>
+                        </tr>
+                        <tr *ngIf="vegList.length==0">
+                            <span class="text-center">No Records Found</span>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <h2>Fruits List</h2>
+            <div class="table-responsive tableFixHead">
+                <table class="table table-bordered">
+                    <!-- <thead>
+                        <tr>
+                            <th scope="col">Details</th>
+                        </tr>
+                    </thead> -->
+                    <tbody style="overflow-y: auto;">
+                        <tr *ngFor="let item of fruitList">
+                            <td>{{item.itemDetail}}</td>
+                        </tr>
+                        <tr *ngIf="fruitList.length==0">
+                            <span class="text-center">No Records Found</span>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

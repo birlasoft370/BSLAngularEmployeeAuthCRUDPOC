@@ -24,6 +24,11 @@ export class ShowDepComponent {
   DepartmentNameFilter: string = "";
   DepartmentListWithoutFilter: any = [];
 
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 3;
+  tableSizes: any = [3, 6, 9, 12];
+
   ngOnInit(): void {
     this.refreshDepList();
   }
@@ -92,5 +97,16 @@ export class ShowDepComponent {
       }
     })
   }
+
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.refreshDepList();
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.refreshDepList();
+  }
+
 
 }

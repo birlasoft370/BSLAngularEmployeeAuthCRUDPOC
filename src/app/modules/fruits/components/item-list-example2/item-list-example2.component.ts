@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { GroceryService } from '../../services/grocery.service';
 
 @Component({
-  selector: 'app-item-list',
-  templateUrl: './item-list.component.html',
-  styleUrls: ['./item-list.component.css']
+  selector: 'app-item-list-example2',
+  templateUrl: './item-list-example2.component.html',
+  styleUrls: ['./item-list-example2.component.css']
 })
-export class ItemListComponent {
+export class ItemListExample2Component {
 
   constructor(private service: GroceryService) {
     this.GetAll();
@@ -26,7 +26,7 @@ export class ItemListComponent {
       var newArray = this.filterByReference(result, this.vegList);
       newArray = this.filterByReference(newArray, this.fruitList);
       console.log(newArray);
-      this.itemList = newArray;
+      this.itemList = newArray.sort((a: any, b: any) => b.itemid - a.itemid);;
     });
   }
 
@@ -39,12 +39,6 @@ export class ItemListComponent {
       });
     });
     return res;
-  }
-
-  RemoveElementFromObjectArray(key: number) {
-    this.itemList.forEach((value: any, index: any) => {
-      if (value.itemid == key) this.itemList.splice(index, 1);
-    });
   }
 
   moveVeg() {
@@ -60,7 +54,7 @@ export class ItemListComponent {
   }
 
   moveFruit() {
-   var tempfruitListresult = this.itemList.filter(function (el: any) {
+    var tempfruitListresult = this.itemList.filter(function (el: any) {
       return el.itemType === 'Fruits';
     });
 
@@ -71,4 +65,3 @@ export class ItemListComponent {
     });
   }
 }
-

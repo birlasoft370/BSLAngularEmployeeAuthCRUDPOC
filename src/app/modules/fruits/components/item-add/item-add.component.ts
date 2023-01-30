@@ -18,17 +18,20 @@ export class ItemAddComponent {
   })
 
   collectItem() {
-    this.service.Save(this.addItem.value).subscribe(result => {
-      console.log(result);
-      this.addItem.reset({
-        itemid: 0,
-        itemDetail: '',
-        itemType: ''
+    console.log(this.addItem.valid);
+    if (this.addItem.valid) {
+      this.service.Save(this.addItem.value).subscribe(result => {
+        console.log(result);
+        this.addItem.reset({
+          itemid: 0,
+          itemDetail: '',
+          itemType: ''
+        });
       });
-    });
+    }
   }
 
-  get FruitFormControl() {
+  get addItemFormControl() {
     return this.addItem.controls;
   }
 }

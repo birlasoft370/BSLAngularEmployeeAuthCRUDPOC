@@ -44,27 +44,33 @@
                     <input [(ngModel)]="DepartmentNameFilter" class="form-control" (keyup)="FilterFn()"
                         placeholder="Filter">
 
-                        <button type="button" class="btn btn-light"
-                        (click)="sortResult('departmentName',true)">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                          <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 5a.5.5 0 0 0-1 0v4.793L5.354 7.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V5z"/>
+                    <button type="button" class="btn btn-light" (click)="sortResult('departmentName',true)">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-square-fill"
+                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 5a.5.5 0 0 0-1 0v4.793L5.354 7.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V5z" />
                         </svg>
-                      </button>
-                      <button type="button" class="btn btn-light"
-                        (click)="sortResult('departmentName',false)">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                          <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
+                    </button>
+                    <button type="button" class="btn btn-light" (click)="sortResult('departmentName',false)">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-square-fill"
+                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z" />
                         </svg>
-                      </button>
+                    </button>
                 </div>
-
                 Department Name
             </th>
             <th>Options</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let dataItem of DepartmentList">
+        <tr *ngFor="let dataItem of DepartmentList | paginate : {
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count
+          };
+    let i = index">
             <td>{{dataItem.departmentId}}</td>
             <td>{{dataItem.departmentName}}</td>
             <td>
@@ -89,3 +95,18 @@
         </tr>
     </tbody>
 </table>
+<div class="d-flex justify-content-center">
+    <div class="d-flex flex-row-reverse bd-highlight mb-2">
+        <div class="p-2 bd-highlight">
+            Show
+            <select (change)="onTableSizeChange($event)" class="custom-select">
+                <option *ngFor="let size of tableSizes" [ngValue]="size">
+                    {{ size }}
+                </option>
+            </select>
+            Entries
+        </div>
+    </div>
+    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
+</div>
